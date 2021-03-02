@@ -14,9 +14,7 @@ const LOGIN_A_STYLE = {
     letterSpacing: '1px',
 };
 
-
-
-function Login_Btn(props) {
+const LoginBtn = () => {
     return (
         <button style={LOGIN_BTN_STYLE}>
             <Link style={LOGIN_A_STYLE} to='/login'>로그인</Link>   
@@ -24,4 +22,4 @@ function Login_Btn(props) {
     );
 }
 
-export default Login_Btn;
+export default LoginBtn;

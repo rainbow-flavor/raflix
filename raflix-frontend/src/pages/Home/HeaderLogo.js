@@ -6,7 +6,7 @@ const LOGO = {
     background: "url('./images/Netflix_Logo_PMS2.png')no-repeat center / 100%",    
 };
 
-const Header_Logo = () => {
+const HeaderLogo = () => {
     return (        
         <h1 style={LOGO}>
             <span className="hide">Raflix</span>
@@ -14,4 +14,4 @@ const Header_Logo = () => {
     );
 }
 
-export default Header_Logo;
+export default HeaderLogo;
