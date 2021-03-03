@@ -1,7 +1,11 @@
 import React from 'react';
 import Header from './Header';
 import HomeSignUp from './HomeSignUp';
+import HomeStory from './HomeStory';
+import Questions from './Questions';
 import './Home.css';
+
+
 
 const Home = () => {
     return (
@@ -27,6 +31,9 @@ const Home = () => {
                 
                 
             </section>
+            <HomeStory/>
+            <Questions />
+         
             {/* <Footer />             */}
         </div>
     );
