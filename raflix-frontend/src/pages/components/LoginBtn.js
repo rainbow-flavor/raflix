@@ -12,6 +12,7 @@ const LOGIN_BTN_STYLE = {
 const LOGIN_A_STYLE = {      
     marginBottom: '9px',
     letterSpacing: '1px',
+    color: '#fff',
 };
 
 const LoginBtn = () => {

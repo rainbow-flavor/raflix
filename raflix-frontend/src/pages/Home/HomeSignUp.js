@@ -1,20 +1,39 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './HomeSignUp.css';
 
 const HomeSignUp = () => {
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
+    const [accept, setAccept] = useState(false);
     const labelRef = useRef();
+    const [linkRef, setLinkRef] = useState('/');
+
+    useEffect(() => {
+        if (accept) {
+            setLinkRef({
+                pathname: '/signup',
+                state: {
+                    email
+                }
+            });
+        } else {
+            setLinkRef('/');
+        }
+    },[email]);
 
     const handleEmail = (e) => {
-        const emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;        
+        const emailRule = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;        
 
         if (emailRule.test(e.target.value)) {
             setEmailError('');
+            setAccept(true);
         } else if(e.target.value.length < 5){
             setEmailError('이메일 주소를 입력해 주세요.');
+            setAccept(false);
         } else {
             setEmailError('정확한 이메일 주소를 입력하세요.');
+            setAccept(false);
         }
         setEmail(e.target.value);
     };
@@ -23,6 +42,8 @@ const HomeSignUp = () => {
         if (e.target.value !== '') return
         labelRef.current.classList.toggle('focus');
     }
+
+    
 
     return (
         <div className="home-signup">            
@@ -41,12 +62,12 @@ const HomeSignUp = () => {
                     </div>
                     <div className="email-error">{emailError}</div>          
                 </div>                
-                <a href="#a" className="email-submit">30일 무료이용</a>
+                <Link to={linkRef} className="email-submit">30일 무료이용</Link>                
             </div>
             
             
         </div>
     );
 };
-
+// {accept ? "/signup" : '/' }
 export default HomeSignUp;

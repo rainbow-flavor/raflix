@@ -44,6 +44,7 @@ label[for="email_input"].focus {
 .email-submit {
   align-self: start;
   padding: 11px 32px;
+  color: #fff;
   font-size: 30px;
   font-weight: 500;
   letter-spacing: 2px;

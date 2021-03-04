@@ -1,4 +1,7 @@
 footer {
+  width: 100%;
+}
+footer > div {
   padding: 78px 0 40px;
   margin: 0 auto;
   width: 1000px;
