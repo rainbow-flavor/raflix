@@ -1,0 +1,54 @@
+.home-intro-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.home-intro-content h2 {
+  font-size: 65px;
+  font-weight: 700;
+}
+.home-intro-content h3 {
+  margin: 16px 0 30px;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.home-email-form {
+  display: flex;
+}
+#home-email-form a {
+  height: 100%;
+  background: #e50914;
+}
+
+.home-background img {
+  width: 100%;
+  height: 815px;
+}
+.home-background-shadow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+.home-email-tip {
+  font-size: 19px;
+  margin: 15px 0;
+  font-weight: 300;
+  text-align: center;
+}

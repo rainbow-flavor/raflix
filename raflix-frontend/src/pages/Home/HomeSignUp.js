@@ -25,7 +25,8 @@ const HomeSignUp = () => {
     }
 
     return (
-        <>            
+        <div className="home-signup">            
+            <h4>시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.</h4>
             <div className="home-email-container">
                 <div className="home-email-form">
                     <div className="email-form">
@@ -42,9 +43,9 @@ const HomeSignUp = () => {
                 </div>                
                 <a href="#a" className="email-submit">30일 무료이용</a>
             </div>
-            <p className="home-email-tip">신규 회원만 이 프로모션을 이용하실 수 있습니다.</p>
             
-        </>
+            
+        </div>
     );
 };
 
