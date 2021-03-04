@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from './Header';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import HomeIntro from './HomeIntro';
 import HomeStory from './HomeStory';
 import Questions from './Questions';
@@ -9,13 +10,12 @@ import './Home.css';
 
 const Home = () => {
     return (
-        <div>
+        <div className="home">
             <Header />
             <HomeIntro/>                
             <HomeStory/>
             <Questions />
-         
-            {/* <Footer />             */}
+            <Footer />            
         </div>
     );
 }

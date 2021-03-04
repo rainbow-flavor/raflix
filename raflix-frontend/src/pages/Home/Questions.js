@@ -32,11 +32,13 @@ const QUESTION_DATA = [
 const Questions = () => {
     return (
         <section className="home-question">
+            <div>
             <h2>자주 묻는 질문</h2>
             <ul>                
-                {QUESTION_DATA.map(v => <QuestAcordion quest={v}/>)}
+                {QUESTION_DATA.map((v, i) => <QuestAcordion key={i} quest={v}/>)}
             </ul>               
             <HomeSignUp/>
+            </div>
         </section>
     );
 }
