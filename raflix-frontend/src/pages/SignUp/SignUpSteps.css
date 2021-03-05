@@ -104,10 +104,14 @@
 }
 
 /* step-price */
-.step-price {
+.step-price-guide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 0 140px 140px;
 }
-.step-price > img {
+.step-price-guide > img {
   margin: 120px 0 30px;
   width: 50px;
   height: 50px;
@@ -136,7 +140,8 @@
   width: 19px;
   height: auto;
 }
-.step-price button {
+.step-priceinfo button,
+.step-price-guide button {
   margin: 45px 0 0;
   padding: 12px 0;
   width: 340px;
@@ -145,6 +150,125 @@
   font-size: 18px;
   cursor: pointer;
 }
+.price-select {
+  padding: 20px 0 0;
+  cursor: pointer;
+}
 .step-priceinfo {
+  margin: 0 auto;
+  width: 960px;
+  padding: 20px 16px 60px;
   text-align: left;
+}
+.step-priceinfo .step-current {
+  margin: 0 0 15px;
+}
+.step-priceinfo .step-check-tip {
+  align-items: flex-start;
+}
+.step-priceinfo .step-check-tip li {
+  margin: 0 0 10px;
+  width: 80%;
+  justify-content: flex-start;
+}
+.price-tag {
+  display: flex;
+  justify-content: flex-end;
+}
+.price-tag span {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  margin-left: 65px;
+  background: #ef6b72;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+}
+.price-tag span::after {
+  content: "";
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid none;
+  border-bottom: 10px solid red;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  transform: translateX(-50%) rotate(180deg);
+}
+.price-tag span.click::after {
+  display: block;
+}
+.price-tag span.click {
+  background: #e50914;
+}
+.price-tag span:last-child {
+  margin-right: 32px;
+}
+.price-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+.price-select .price-info:nth-child(5) {
+  border-bottom: none;
+}
+.price-info span {
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  color: #737373;
+  padding: 22px 0;
+  font-weight: 600;
+}
+.price-info span.click {
+  color: #e50914;
+}
+.price-info span:first-child {
+  width: 40%;
+  text-align: left;
+}
+.price-select p {
+  padding: 5px 0 0;
+  color: #737373;
+  font-size: 13px;
+}
+.step-priceinfo button {
+  display: block;
+  margin: 45px auto 0;
+  width: 400px;
+}
+
+/* step-last */
+.step-last {
+  margin: 0 auto;
+  padding: 20px 0 100px;
+  width: 1000px;
+  text-align: center;
+  color: #333;
+}
+.step-last img {
+  margin: 20px 0;
+  width: 50px;
+  height: 50px;
+}
+.step-last h2 {
+  padding: 0 0 30px;
+}
+.step-last h3 {
+  padding: 0 0 30px;
+  font-size: 16px;
+}
+.step-last .warn {
+  margin: 0 0 30px;
+}
+.step-last div:last-child > b {
+  display: block;
 }
