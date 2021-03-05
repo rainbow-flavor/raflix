@@ -1,5 +1,4 @@
 import React from 'react';
-import { VscGlobe } from "react-icons/vsc";
 import './Footer.css';
 
 const Footer = ({ style }) => {

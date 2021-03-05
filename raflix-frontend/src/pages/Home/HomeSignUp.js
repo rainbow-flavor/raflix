@@ -20,6 +20,7 @@ const HomeSignUp = () => {
         } else {
             setLinkRef('/');
         }
+        
     },[email]);
 
     const handleEmail = (e) => {
@@ -41,9 +42,7 @@ const HomeSignUp = () => {
     const handleLabel = (e) => {
         if (e.target.value !== '') return
         labelRef.current.classList.toggle('focus');
-    }
-
-    
+    }    
 
     return (
         <div className="home-signup">            
@@ -69,5 +68,5 @@ const HomeSignUp = () => {
         </div>
     );
 };
-// {accept ? "/signup" : '/' }
+
 export default HomeSignUp;
