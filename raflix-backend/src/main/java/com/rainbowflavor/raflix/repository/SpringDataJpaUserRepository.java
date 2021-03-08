@@ -15,6 +15,4 @@ public interface SpringDataJpaUserRepository extends JpaRepository<User, Long>, 
     @Override
     Boolean existsByUsername(String name);
 
-    @Override
-    Boolean existsByEmail(String email);
 }

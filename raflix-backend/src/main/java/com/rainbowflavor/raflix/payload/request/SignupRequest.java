@@ -12,13 +12,9 @@ import java.util.Set;
 @Setter
 public class SignupRequest {
     @NotBlank
-    @Size(min=5, max=20)
-    private String username;
-
-    @NotBlank
     @Email
     @Size(max = 50)
-    private String email;
+    private String username;
 
     @NotBlank
     @Size(min=8, max=20)

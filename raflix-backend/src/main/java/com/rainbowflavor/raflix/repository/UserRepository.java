@@ -12,5 +12,4 @@ public interface UserRepository {
     List<User> findAll();
 
     Boolean existsByUsername(String name);
-    Boolean existsByEmail(String email);
 }

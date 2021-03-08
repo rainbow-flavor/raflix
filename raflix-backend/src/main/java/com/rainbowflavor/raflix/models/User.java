@@ -17,8 +17,8 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "users",
         uniqueConstraints = {
-        @UniqueConstraint(columnNames = "username"),
-        @UniqueConstraint(columnNames = "email")})
+        @UniqueConstraint(columnNames = "username")
+})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,13 +26,9 @@ public class User {
 
     //NotBlack은 null or "" or " "을 비허용한다
     @NotBlank
-    @Size(max = 20)
-    private String username;
-
-    @NotBlank
     @Size(max = 50)
     @Email
-    private String email;
+    private String username;
 
     @NotBlank
     @Size(max = 120)
@@ -51,9 +47,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Favorite> favoriteList = new ArrayList<>();
 
-    public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email, @NotBlank @Size(max = 120) String password, Set<Role> roles) {
+    public User(@NotBlank @Size(max = 50) String username, @NotBlank @Size(max = 120) String password, Set<Role> roles) {
         this.username = username;
-        this.email = email;
         this.password = password;
         this.roles = roles;
     }
