@@ -18,7 +18,7 @@ import java.util.Set;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -26,15 +26,11 @@ public class AuthController {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @PostMapping("/signup")
-    public ResponseEntity<?> registerUser (@Valid @RequestBody SignupRequest signupRequest){
+    @PostMapping("/auth")
+    public ResponseEntity<?> registerUser (@RequestBody SignupRequest signupRequest){
         if(userRepository.existsByUsername(signupRequest.getUsername())) {
-            return ResponseEntity.badRequest().body(new MessageResponse(signupRequest.getUsername() + "is not unique username"));
+            return ResponseEntity.badRequest().body(new MessageResponse(signupRequest.getUsername() + "is not unique email"));
         }
-        if(userRepository.existsByEmail(signupRequest.getEmail())){
-            return ResponseEntity.badRequest().body(new MessageResponse(signupRequest.getEmail() + "is not unique email"));
-        }
-
 
         Set<String> requestRole = signupRequest.getRole();
         Set<Role> roles = new HashSet<>();
@@ -46,7 +42,6 @@ public class AuthController {
 
 
         User user = new User(signupRequest.getUsername(),
-                            signupRequest.getEmail(),
                             passwordEncoder.encode(signupRequest.getPassword()),
                             roles);
         userRepository.save(user);
