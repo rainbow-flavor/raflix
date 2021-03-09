@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SignUpThree = () => {
     return (
@@ -16,6 +17,7 @@ const SignUpThree = () => {
                 <b>약정은 없습니다.</b>
                 <b>해지는 언제든지 온라인으로.</b>
             </div>
+            <Link to="/browse">시청하기~</Link>
         </div>
     );
 }

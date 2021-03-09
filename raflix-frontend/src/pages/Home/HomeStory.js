@@ -12,7 +12,7 @@ const HomeStory = () => {
                     </div>
                     <div className="home-story-show">
                         <img src="./images/tv.png" alt="home"/>                       
-                        <video autoPlay playsInline="" muted="true" loop="true">
+                        <video autoPlay playsInline="" muted={true} loop={true}>
                             <source src="./videos/video-tv-0819.m4v"/>
                         </video>                                         
                     </div>
@@ -37,7 +37,7 @@ const HomeStory = () => {
                     </div>
                     <div className="home-story-show">
                         <img src="./images/device-pile.png" alt="home"/>                       
-                        <video class="home-video" autoPlay playsInline="" muted="true" loop="true">
+                        <video className="home-video" autoPlay playsInline="" muted={true} loop={true}>
                             <source src="./videos/video-devices.m4v"/>
                         </video>                                         
                     </div>

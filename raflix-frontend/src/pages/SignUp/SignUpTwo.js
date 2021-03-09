@@ -79,7 +79,7 @@ const priceDataComponent = (data, className, state, setState) => {
 };
 
 const StepPriceTwo = ({ userData, setUserData }) => {
-    const [price, setPrice] = useState('9500원');
+    // const [price, setPrice] = useState('9500원');
     const [priceSelect, setPriceSelect] = useState([
         ['click', '', ''],
         ['click', '', '' ],
