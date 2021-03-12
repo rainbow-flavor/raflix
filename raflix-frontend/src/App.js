@@ -1,18 +1,11 @@
 import './App.css';
-<<<<<<< HEAD
 import React, { useEffect } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-=======
 import { BrowserRouter, Route } from 'react-router-dom';
->>>>>>> 080dd0ccd29c0ab3d125bc522ee4193a0101b334
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Browse from './pages/Browse/Browse';
-<<<<<<< HEAD
 import AuthService from "./Service/AuthService.js";
-=======
->>>>>>> 080dd0ccd29c0ab3d125bc522ee4193a0101b334
 
 const App = () => {  
   const loginCheck = () => {

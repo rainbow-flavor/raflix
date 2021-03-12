@@ -11,12 +11,9 @@ const HomeStory = () => {
                         <p>스마트 TV, PlayStation, Xbox, Chromecast,<br/> Apple TV, 블루레이 플레이어 등 다양한<br/> 디바이스에서 시청하세요.</p> 
                     </div>
                     <div className="home-story-show">
-                        <img src="./images/tv.png" alt="home"/>                       
-<<<<<<< HEAD
+                        <img src="./images/tv.png" alt="home"/>                    
+
                         <video autoPlay playsInline="" muted loop>
-=======
-                        <video autoPlay playsInline="" muted={true} loop={true}>
->>>>>>> 080dd0ccd29c0ab3d125bc522ee4193a0101b334
                             <source src="./videos/video-tv-0819.m4v"/>
                         </video>                                         
                     </div>
@@ -40,12 +37,9 @@ const HomeStory = () => {
                         <p>각종 영화와 TV 프로그램을 스마트폰,<br/> 태블릿, 노트북, TV에서 무제한으로<br/> 스트리밍하세요. 추가 요금이 전혀 없습니다.</p> 
                     </div>
                     <div className="home-story-show">
-                        <img src="./images/device-pile.png" alt="home"/>                       
-<<<<<<< HEAD
-                        <video className="home-video" autoPlay playsInline muted loop>
-=======
-                        <video className="home-video" autoPlay playsInline="" muted={true} loop={true}>
->>>>>>> 080dd0ccd29c0ab3d125bc522ee4193a0101b334
+                        <img src="./images/device-pile.png" alt="home"/>                      
+
+                        <video className="home-video" autoPlay playsInline muted loop>                      
                             <source src="./videos/video-devices.m4v"/>
                         </video>                                         
                     </div>

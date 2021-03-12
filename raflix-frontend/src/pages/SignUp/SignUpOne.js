@@ -96,7 +96,6 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
       let test = {
         username: email,
         password: password,
-<<<<<<< HEAD
       };      
 
       AuthService.signup(test)
@@ -107,16 +106,7 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
           const userData = JSON.stringify(res);
           localStorage.setItem('USER_DATA', userData);
         });
-      });
-        
-=======
-      };
-      AuthService.signup(test).then(() => {
-        console.log("success");
-
-      });
->>>>>>> 080dd0ccd29c0ab3d125bc522ee4193a0101b334
-      console.log(email, password);
+      });     
       setUserData({
         email,
         password,
@@ -207,3 +197,8 @@ const SignUpOne = ({ EMAIL, setUserData }) => {
 };
 
 export default SignUpOne;
+
+    
+     
+
+      
