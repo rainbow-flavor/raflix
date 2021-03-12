@@ -12,11 +12,7 @@ const SignUpOneIntro = ({ setNextStep }) => {
         <br /> 비밀번호를 설정해 다양한
         <br /> 디바이스에서 Netflix를 시청하세요.
       </div>
-      <button
-        onClick={() => {
-          setNextStep(true);
-        }}
-      >
+      <button onClick={() => {setNextStep(true);}}>      
         다음
       </button>
     </div>
@@ -101,7 +97,10 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
         username: email,
         password: password,
       };
-      AuthService.signup(test).then(() => console.log("success"));
+      AuthService.signup(test).then(() => {
+        console.log("success");
+
+      });
       console.log(email, password);
       setUserData({
         email,
@@ -109,6 +108,7 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
       });
     }
   };
+
   return (
     <div className="step-intro sign-up-input">
       <div className="step-intro-tip">
@@ -179,7 +179,7 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
 
 const SignUpOne = ({ EMAIL, setUserData }) => {
   const [nextStep, setNextStep] = useState(false);
-  console.log(EMAIL);
+  // console.log(EMAIL);
   return (
     <div className="step">
       {!nextStep ? (
