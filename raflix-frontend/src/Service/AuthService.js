@@ -6,6 +6,9 @@ class AuthService {
   signup(user) {
     return axios.post(SIGNUP_API_BASE_URL, user);
   }
+  login(user) {
+    return axios.post(SIGNUP_API_BASE_URL+"/signin", user);
+  }
 }
 
 export default new AuthService();

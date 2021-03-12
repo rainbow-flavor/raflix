@@ -100,8 +100,18 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
       let test = {
         username: email,
         password: password,
-      };
-      AuthService.signup(test).then(() => console.log("success"));
+      };      
+
+      AuthService.signup(test)
+      .then((res) => console.log("success"))      
+      .then((res) => {
+        AuthService.login(test).then((res) => {
+          console.log('로그인성공');
+          const userData = JSON.stringify(res);
+          localStorage.setItem('USER_DATA', userData);
+        });
+      });
+        
       console.log(email, password);
       setUserData({
         email,
