@@ -12,11 +12,7 @@ const SignUpOneIntro = ({ setNextStep }) => {
         <br /> 비밀번호를 설정해 다양한
         <br /> 디바이스에서 Netflix를 시청하세요.
       </div>
-      <button
-        onClick={() => {
-          setNextStep(true);
-        }}
-      >
+      <button onClick={() => {setNextStep(true);}}>      
         다음
       </button>
     </div>
@@ -100,8 +96,26 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
       let test = {
         username: email,
         password: password,
+<<<<<<< HEAD
+      };      
+
+      AuthService.signup(test)
+      .then((res) => console.log("success"))      
+      .then((res) => {
+        AuthService.login(test).then((res) => {
+          console.log('로그인성공');
+          const userData = JSON.stringify(res);
+          localStorage.setItem('USER_DATA', userData);
+        });
+      });
+        
+=======
       };
-      AuthService.signup(test).then(() => console.log("success"));
+      AuthService.signup(test).then(() => {
+        console.log("success");
+
+      });
+>>>>>>> 080dd0ccd29c0ab3d125bc522ee4193a0101b334
       console.log(email, password);
       setUserData({
         email,
@@ -109,6 +123,7 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
       });
     }
   };
+
   return (
     <div className="step-intro sign-up-input">
       <div className="step-intro-tip">
@@ -179,7 +194,7 @@ const SignUpOneInPut = ({ EMAIL, setUserData }) => {
 
 const SignUpOne = ({ EMAIL, setUserData }) => {
   const [nextStep, setNextStep] = useState(false);
-  console.log(EMAIL);
+  // console.log(EMAIL);
   return (
     <div className="step">
       {!nextStep ? (
