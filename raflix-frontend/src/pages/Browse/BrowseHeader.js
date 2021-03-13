@@ -1,56 +1,86 @@
 import React, { useState, useRef } from 'react';
 import {Link} from 'react-router-dom';
-import { FaSearch,FaGift,FaBell,FaWindowClose  } from "react-icons/fa";
+import { FaSearch, FaGift, FaBell } from "react-icons/fa";
 import './BrowseHeader.css';
 
 const SearchVideo = () => {
     const [search, setSearch] = useState('');
-    const [searchSw, setSearchSw] = useState(false);
-    
-    const labelRef = useRef();
-    
+    const [searchSw, setSearchSw] = useState(false);    
+    const searchBtnRef = useRef();
+    const labelRef = useRef();    
+
+    const handleInput = e => setSearch(e.target.value);
+
     const showInput = () => {
-        labelRef.current.classList.add('focus');
+        searchBtnRef.current.classList.add('focus');
+        setSearchSw(true);
     };
 
-    const hideInput = (e) => {
-        if(search.length <= 0) {
+    const deleteSearch = () => setSearch('');
+    
+    const onBlurInput = e => {
+        if (search === '') {
+            searchBtnRef.current.classList.remove('focus');
             setSearchSw(false);
-            labelRef.current.classList.remove('focus');
         }        
-
     };
-
-    const handleInput = e => {
-        setSearch(e.target.value);
-    };
-
     return (
         <>
-            <label 
-            ref={labelRef} 
-            className="searchBox" 
-            htmlFor="search"
-            onFocus={()=> setSearchSw(true)}
-            onBlur={hideInput}  
-            onClick={showInput}          
-            >
-                <span className="hide">검색</span>
-                <FaSearch className="search-icon" />
-                <input id="search" placeholder="제목, 사람, 장르" value={search} onChange={handleInput}/>
-                {searchSw && 
-                    <FaWindowClose style={{                        
-                        fontSize: '20px'
-                    }}
-                    className="search-close"                     
-                    />
-                }
-            </label>
+           <div className="search-video">
+               <div 
+               ref={searchBtnRef} 
+               onClick={showInput} 
+               className="before-search">
+                   <FaSearch/>
+                </div>
+               
+                <div className={`search ${searchSw ? 'focus' : ''}`} onBlur={onBlurInput}>
+                    <label htmlFor="search">
+                        <span className="hide">제목, 사람, 장르 검색</span>
+                        <div className="search-mark"><FaSearch/></div>
+                        <input 
+                        id="search" 
+                        placeholder="제목, 사람, 장르" 
+                        value={search}
+                        onChange={handleInput}
+                        onBlur={onBlurInput}
+                        />
+                        {search.length > 0 && (
+                            <div className="search-close" onClick={deleteSearch}>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        )}                        
+                    </label>
+                </div>
+              
+           </div>
         </>
     );
 };
 
+const Profile = () => {
+    const logout = () => localStorage.removeItem('USER_DATA');
+    return (
+        <div className="profile">            
+            <div>
+                <a>
+                    <img src="./images/kids_profile.jpg" alt="어린이"/>
+                    키즈
+                </a>    
+                <a>프로필 관리</a>            
+            </div>            
+            <div>
+                <a>계정</a>
+                <a>고객센터</a>
+                <a onClick={logout}>Raflix에서 로그아웃</a>
+            </div>            
+        </div>
+    );
+};
+
 const BrowseHeader = () => {
+    const [profile, setProfile] = useState(false);
     return (
         <header>
             <div>                
@@ -71,13 +101,23 @@ const BrowseHeader = () => {
 
             <ul className="user-nav">                
                 <li><SearchVideo/></li>
-                <li>키즈</li>
-                <li><FaGift/></li>
-                <li><FaBell/></li>
-                <li>USER</li>
+                <li><a>키즈</a></li>
+                <li><a><span className="hide">선물</span><FaGift/></a></li>
+                <li><a><span className="hide">알림</span><FaBell/></a></li>
+                <li 
+                className="user-profile" 
+                onMouseEnter={() => setProfile(true)} 
+                onMouseLeave={() => setProfile(false)}
+                >
+                    <a>
+                    <span className="hide">내 프로필</span>
+                    <img src="./images/profile.png"/>
+                    </a>
+                    {profile && <Profile />}                        
+                </li>
             </ul>
         </header>
-    )
+    );
 };
 
 export default BrowseHeader;

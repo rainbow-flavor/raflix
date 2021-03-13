@@ -8,19 +8,19 @@ import Browse from './pages/Browse/Browse';
 import AuthService from "./Service/AuthService.js";
 
 const App = () => {  
-  const loginCheck = () => {
-    const userData = localStorage.getItem('USER_DATA');
-    const accessToken = JSON.parse(userData).data.accessToken;
-    if(!accessToken) {      
-      return;      
-    } else {
-      console.log('토큰인증');      
-    }
-    return accessToken;
-  };
-  useEffect(() => {
-    loginCheck();    
-  },[]);
+  // const loginCheck = () => {
+  //   const userData = localStorage.getItem('USER_DATA');
+  //   const accessToken = JSON.parse(userData).data.accessToken;
+  //   if(!accessToken) {      
+  //     return;      
+  //   } else {
+  //     console.log('토큰인증');      
+  //   }
+  //   return accessToken;
+  // };
+  // useEffect(() => {
+  //   loginCheck();    
+  // },[]);
   
   return (
     <BrowserRouter>
