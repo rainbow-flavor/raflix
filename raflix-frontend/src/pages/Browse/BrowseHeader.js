@@ -91,11 +91,11 @@ const BrowseHeader = () => {
                 </h1>               
 
                 <ul className="contents-nav">                    
-                    <li><Link>홈</Link></li>
-                    <li><Link>Tv프로그램</Link></li>
-                    <li><Link>영화</Link></li>
-                    <li><Link>NEW! 요즘 대세 콘텐츠</Link></li>
-                    <li><Link>내가 찜한 콘텐츠</Link></li>
+                    <li><a>홈</a></li>
+                    <li><a>Tv프로그램</a></li>
+                    <li><a>영화</a></li>
+                    <li><a>NEW! 요즘 대세 콘텐츠</a></li>
+                    <li><a>내가 찜한 콘텐츠</a></li>
                 </ul>
             </div>
 

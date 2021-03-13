@@ -1,0 +1,31 @@
+.video-list {
+  padding: 0 4%;
+}
+.list-name {
+  color: #ccc;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.list-name h3 {
+  position: relative;
+}
+.list-name span {
+  font-size: 12px;
+}
+.list-name span svg {
+  font-size: 15px;
+}
+
+.list-name:hover {
+  color: #fff;
+}
+.list {
+  width: 1000px;
+}
+.list > li {
+  margin: 10px;
+  padding: 15px;
+  background: #fff;
+  color: #000;
+}

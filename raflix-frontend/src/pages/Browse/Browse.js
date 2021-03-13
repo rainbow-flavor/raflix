@@ -1,20 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useEffect, useState } from 'react';
+import axios from 'axios';
 import BrowseHeader from './BrowseHeader';
+import VideoList from './VideoList';
+import Footer from '../components/Footer';
 import './Browse.css';
 
-const STYLE = {
-    background: '#000',
-    height: '100vh'
+const FooterStyle = {
+    backgroundColor: '#000'
+};
+const MAINBOX = {
+    width: '100%',
+    height:'300px',
+    backgroundColor: '#ccc'
 };
 
-const Browse = () => {
-    return (
-        <div className="browse" style={STYLE}>
-            <BrowseHeader/>
 
-            
+const Browse = () => {    
+    const [movieData, setMovieData] = useState([]);
+    useEffect(() => {
+        const movieUrl = "https://yts.mx/api/v2/list_movies.json?sort_by=rating";
+        let movieData = [];
+        axios.get(movieUrl).then((res) => {
+            movieData= [...res.data.data.movies];        
+            setMovieData(movieData);
+        }); 
+    },[]);      
+    return (
+       
+        <div className="browse">
+            <BrowseHeader/>
+            <div style={MAINBOX}></div>
+            <VideoList heading={"Action"} data={movieData.filter((v) => v.genres.includes("Action"))} />           
+            <VideoList heading={"Romance"} data={movieData.filter((v) => v.genres.includes("Romance"))} />           
+            <VideoList heading={"Drama"} data={movieData.filter((v) => v.genres.includes("Drama"))} />           
+            <Footer style={FooterStyle} />
         </div>
+        
     );
 };
 
