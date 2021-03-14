@@ -1,6 +1,3 @@
-.video-list {
-  padding: 0 4%;
-}
 .list-name {
   color: #ccc;
   font-weight: 600;
@@ -9,23 +6,79 @@
 }
 .list-name h3 {
   position: relative;
+  padding: 0 4%;
+  font-size: 32px;
 }
 .list-name span {
   font-size: 12px;
 }
+.video-list:hover .list-name svg {
+  display: inline-block;
+}
 .list-name span svg {
-  font-size: 15px;
+  display: none;
+  font-size: 29px;
 }
 
 .list-name:hover {
   color: #fff;
 }
-.list {
-  width: 1000px;
-}
+
+/* list */
 .list > li {
   margin: 10px;
   padding: 15px;
+  height: 200px;
   background: #fff;
   color: #000;
+}
+
+/* react-slick 관련 css */
+.list .slick-slider {
+  padding: 0 4%;
+  width: 100%;
+}
+.list .slick-list {
+  overflow: visible;
+}
+.list .slick-arrow {
+  display: block;
+  z-index: 10;
+  width: 4%;
+  height:100%;
+  background: rgba(0,0,0, 0.7);
+}
+.list .slick-arrow::before,
+.list .slick-arrow::after {  
+  transition : all 0.3s ease;
+}
+.list .slick-arrow:hover::before,
+.list .slick-arrow:hover::after {
+  font-size: 30px;
+}
+.list .slick-prev {  
+  left:0;
+  background: rgba(0,0,0, 1);
+  pointer-events: none;
+}
+.list .slick-prev::before {
+  display: none;
+  content: '🧡';
+}
+.list.focus .slick-prev {  
+  background: rgba(0,0,0, 0.7);
+  pointer-events: auto;
+}
+.list.focus .slick-prev:before {
+  display: block;
+}
+.list .slick-next {
+  right:0;
+}
+.list .slick-next::before {
+  display: none;
+  content: '💔';
+}
+.list:hover .slick-next::before {
+  display: block;
 }
