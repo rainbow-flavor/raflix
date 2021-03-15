@@ -22,7 +22,7 @@ const VideoList = ({ heading, data }) => {
             <div className="list-name">
                 <h3>
                     {heading}
-                    <span>모두 보기</span>
+                    <span>모두보기<em>모두보기</em></span>                
                     <b><FaAngleRight/></b>                    
                 </h3>                
             </div>
