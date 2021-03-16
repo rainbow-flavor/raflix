@@ -51,7 +51,7 @@ const VideoList = ({ heading, data }) => {
                 <Slider {...settings}>
                     {data.map((info,i) => {                        
                         const {title, id} = info;
-                        return <Video key={id} {...info}/>
+                        return <Video key={id} data={{...info}}/>
                     })}                               
                 </Slider>
             </ul>
