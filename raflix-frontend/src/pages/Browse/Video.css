@@ -1,10 +1,21 @@
-.video {
-    margin: 0 2px;
+.video {    
+    position: relative;        
     border-radius: 5px;
-    overflow: hidden;
 }
-.video > div {
-    background: #fff;
-    color: #2b2b2b;
-    height: 168px;
+.video-container {
+    position: relative;
+}
+.video-info {
+    position: absolute;
+    left:0; top:0;     
+    transition: all 0.3s 0.1s ease;
+}
+.video:hover {
+    z-index: 2;    
+}
+.video:hover .video-info {
+    transform: scale(1.5);
+}
+.video-thumb img {
+    width: 100%;
 }

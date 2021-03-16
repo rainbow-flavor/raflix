@@ -1,10 +1,27 @@
 import React, { useState } from 'react';
-import { FaAngleRight } from "react-icons/fa";
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import Slider from "react-slick";
 import Video from './Video.js';
 import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
 import './VideoList.css';
+
+function PrevArrow(props) {
+    const {className, style, onClick} = props;
+    return (
+        <button className={className} style={style} onClick={onClick}>
+            <i><FaAngleLeft/></i>
+        </button>
+    );
+}
+
+function NextArrow(props) {
+    const {className, style, onClick} = props;
+    return (
+        <button className={className} style={style} onClick={onClick}>
+            <i><FaAngleRight/></i>
+        </button>
+    );
+}
 
 const VideoList = ({ heading, data }) => {    
     const [click, setClick] = useState(false);   
@@ -12,8 +29,10 @@ const VideoList = ({ heading, data }) => {
     const settings = {
         dots: false,        
         speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 5,   
+        slidesToShow: 6,
+        slidesToScroll: 6,  
+        prevArrow: <PrevArrow/>,
+        nextArrow: <NextArrow/>,        
         afterChange : () => setClick(true)       
     };
     
@@ -28,16 +47,17 @@ const VideoList = ({ heading, data }) => {
             </div>
 
             <ul className={`list ${click ? "focus" : ''}`}>
+                {!click && <div className="prev-block"></div>}
                 <Slider {...settings}>
-                    {data.map((info,i) => {
+                    {data.map((info,i) => {                        
                         const {title, id} = info;
-                        return <Video key={id} title={title}/>
+                        return <Video key={id} {...info}/>
                     })}                               
                 </Slider>
             </ul>
-            
         </div>
     );
 };
 
 export default VideoList;
+            

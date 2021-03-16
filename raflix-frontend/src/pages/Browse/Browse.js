@@ -31,8 +31,10 @@ const Browse = () => {
             <BrowseHeader/>
             <div style={MAINBOX}></div>
             <VideoList heading={"Action"} data={movieData.filter((v) => v.genres.includes("Action"))} />           
-            <VideoList heading={"Romance"} data={movieData.filter((v) => v.genres.includes("Romance"))} />           
+            {/* <VideoList heading={"Romance"} data={movieData.filter((v) => v.genres.includes("Romance"))} />            */}
             <VideoList heading={"Drama"} data={movieData.filter((v) => v.genres.includes("Drama"))} />           
+            <Footer style={FooterStyle} />
+            <Footer style={FooterStyle} />
             <Footer style={FooterStyle} />
         </div>
         

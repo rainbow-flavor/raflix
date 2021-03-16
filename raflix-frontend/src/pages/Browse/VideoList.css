@@ -1,12 +1,18 @@
+.video-list {
+  width: 90%;
+  margin:0 5% 55px;
+}
+.video-list:hover {
+  position: relative;
+  z-index: 2;
+}
 .list-name {
   color: #ccc;
   font-weight: 600;
   transition: color 0.3s ease;
   cursor: pointer;
 }
-.list-name h3 {
-  position: relative; 
-  padding: 0 4%;
+.list-name h3 {    
   font-size: 32px;
 }
 .list-name span {  
@@ -33,7 +39,6 @@
   font-style: normal;  
   visibility: visible;
 }
-
 .list-name b {
   display: none;
   font-size: 18px;
@@ -42,64 +47,72 @@
   display: inline;
   vertical-align: bottom;
 }
-
 .list-name:hover {
   color: #fff;
 }
 
-/* list */
-.list > li {
-  margin: 10px;
-  padding: 15px;
-  height: 200px;
-  background: #fff;
-  color: #000;
-}
-
 /* react-slick 관련 css */
-.list .slick-slider {
-  padding: 0 4%;
-  width: 100%;
+.list {
+  position: relative;
 }
-.list .slick-list {
+.prev-block {
+  position: absolute;  
+  top:0;
+  left: -96px;
+  width: 96px;
+  height: 100%;
+  font-size: 0;
+  color:#fff;
+  font-weight: 700;
+  background: rgba(0,0,0,1);
+  z-index: 10;
+}
+.slick-list {
+  overflow: visible; 
+}
+.slick-slide {  
+  padding: 0 1px;
+  
+}
+.slick-list:hover .slick-slide {  
   overflow: visible;
 }
-.list .slick-arrow {
+.slick-arrow {
+  position: absolute;  
+  top:0;
+  z-index: 2;
+  width: 96px;
+  height: 100%;
+  font-size: 0;
+  color:#fff;
+  font-weight: 700;
+  background: rgba(0,0,0,0.5);
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+.slick-arrow:hover {
+  background: rgba(0,0,0,0.7);
+}
+.slick-prev {    
+  left: -96px;   
+}
+.list.focus .slick-prev{
   display: block;
-  z-index: 10;
-  width: 4%;
-  height:100%;
-  background: rgba(0,0,0, 0.7);
+} 
+.slick-next {
+  right: -96px;
 }
-.list .slick-arrow::before,
-.list .slick-arrow::after {  
-  transition : all 0.3s ease;
+.slick-prev i,
+.slick-next i {
+  display: none;  
+  font-size: 50px;
+  transition: all 0.3s ease;
 }
-.list .slick-arrow:hover::before,
-.list .slick-arrow:hover::after {
-  font-size: 30px;
+.slick-arrow:hover i {
+  transform: scale(1.5);
+  transform-origin: center;
 }
-.list .slick-prev {  
-  left:0;
-  background: rgba(0,0,0, 1);
-  pointer-events: none;
-}
-.list .slick-prev::before {
-  display: none;
-  content: '🧡';
-}
-.list.focus .slick-prev {  
-  background: rgba(0,0,0, 0.7);
-  pointer-events: auto;
-}
-.list .slick-next {
-  right:0;
-}
-.list .slick-next::before {
-  display: none;
-  content: '💔';
-}
-.list.focus:hover .slick-prev::before,
-.list:hover .slick-next::before {
+.video-list:hover .list.focus .slick-prev > i, 
+.video-list:hover .slick-next > i {
   display: block;
 }

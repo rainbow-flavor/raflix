@@ -18,6 +18,8 @@
   overflow: hidden;
 }
 
-body {
+body {  
+  width: 1920px;
+  overflow-x: hidden;
   font-family: "noto-sans-kr";
 }
