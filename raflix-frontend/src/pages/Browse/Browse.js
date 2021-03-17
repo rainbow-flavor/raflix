@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import BrowseHeader from './BrowseHeader';
 import VideoList from './VideoList';
@@ -24,7 +24,7 @@ const Browse = () => {
             movieData= [...res.data.data.movies];        
             setMovieData(movieData);
         }); 
-    },[]);      
+    },[movieData]);      
     return (
        
         <div className="browse">

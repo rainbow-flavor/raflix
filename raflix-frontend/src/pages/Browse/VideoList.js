@@ -25,7 +25,7 @@ function NextArrow(props) {
 
 const VideoList = ({ heading, data }) => {    
     const [click, setClick] = useState(false);   
-     
+     const [show, setShow] =useState(false);
     const settings = {
         dots: false,        
         speed: 500,
@@ -36,8 +36,8 @@ const VideoList = ({ heading, data }) => {
         afterChange : () => setClick(true)       
     };
     
-    return (
-        <div className="video-list">
+    return (    
+        <div className={`video-list ${show ? 'focus' : ''}`}>
             <div className="list-name">
                 <h3>
                     {heading}
@@ -50,8 +50,8 @@ const VideoList = ({ heading, data }) => {
                 {!click && <div className="prev-block"></div>}
                 <Slider {...settings}>
                     {data.map((info,i) => {                        
-                        const {title, id} = info;
-                        return <Video key={id} data={{...info}}/>
+                        const { id } = info;
+                        return <Video setShow={setShow}key={id} data={{...info}}/>
                     })}                               
                 </Slider>
             </ul>

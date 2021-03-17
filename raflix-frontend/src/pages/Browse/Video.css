@@ -1,21 +1,20 @@
-.video {    
-    position: relative;        
-    border-radius: 5px;
+.video {
+  position: relative;
+  border-radius: 5px;
 }
 .video-container {
-    position: relative;
+  position: relative;
 }
 .video-info {
-    position: absolute;
-    left:0; top:0;     
-    transition: all 0.3s 0.1s ease;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: all 0.3s 0.1s ease;
 }
 .video:hover {
-    z-index: 2;    
-}
-.video:hover .video-info {
-    transform: scale(1.5);
+  z-index: 2;
 }
 .video-thumb img {
-    width: 100%;
+  width: 100%;
 }
