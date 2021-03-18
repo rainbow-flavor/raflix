@@ -1,12 +1,14 @@
 .video-list {
   position: relative;
+  z-index: 10;
   width: 90%;
   margin: 0 5% 55px;
 }
 .video-list:hover {
-  z-index: 2;
+  z-index: 11;
 }
 .list-name {
+  padding: 0 0 10px;
   color: #ccc;
   font-weight: 600;
   transition: color 0.3s ease;

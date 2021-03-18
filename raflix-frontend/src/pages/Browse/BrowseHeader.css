@@ -3,8 +3,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 100;
   width: 100%;
-  padding: 12px 44px;
+  padding: 12px 96px;
   background-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.7) 10%,
