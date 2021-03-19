@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import Slider from "react-slick";
-import Video from './Video.js';
+import TopVideo from './TopVideo';
 import "slick-carousel/slick/slick.css"; 
 import './VideoList.css';
 
@@ -23,13 +23,7 @@ function NextArrow(props) {
     );
 }
 
-function TopVideo() {
-        return (
-            <></>
-        )
-}
-
-const TopVideoList = ({ heading, data }) => {    
+const TopVideoList = ({ data }) => {    
     const [click, setClick] = useState(false);   
      const [show, setShow] =useState(false);
     const settings = {
@@ -46,7 +40,7 @@ const TopVideoList = ({ heading, data }) => {
         <div className={`video-list ${show ? 'focus' : ''}`}>
             <div className="list-name">
                 <h3>
-                    {heading}
+                    TOP 10 컨텐츠
                     <span>모두보기<em>모두보기</em></span>                
                     <b><FaAngleRight/></b>                    
                 </h3>                
@@ -57,7 +51,7 @@ const TopVideoList = ({ heading, data }) => {
                 <Slider {...settings}>
                     {data.map((info,i) => {                        
                         const { id } = info;
-                        return <Video setShow={setShow}key={id} data={{...info}}/>
+                        return <TopVideo rank={i} setShow={setShow} key={id} data={{...info}}/>
                     })}                               
                 </Slider>
             </ul>

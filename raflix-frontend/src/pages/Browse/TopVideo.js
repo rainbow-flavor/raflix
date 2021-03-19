@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import VideoInfo from './VideoInfo';
 import './Video.css';
 
-const Video = ({ data,setShow }) => {    
+const TopVideo = ({ rank,data,setShow }) => {    
     const [trasnformData, setTrasnformData] = useState('');  
     const [userData, setUserData] = useState({
         like : false,
@@ -13,7 +13,7 @@ const Video = ({ data,setShow }) => {
     const videoRef = useRef();
     const fadeInfo = useRef();
 
-    const indexCheck = () => {
+    const indexCheck = () => { 
         const slideIdx = videoRef.current.parentNode.parentNode.dataset.index;        
         if (slideIdx % 6 === 0) {
             setTrasnformData('left center');
@@ -43,14 +43,16 @@ const Video = ({ data,setShow }) => {
 
     return (
         <li 
-        className="video" 
+        className="video top-video" 
         ref={videoRef}         
         onMouseEnter={hoverShowInfo}         
         >
             <div className="video-container">
-                <div className="video-thumb">
-                    <img src={data.large_cover_image} alt={data.title}/>        
-                                         {/*이미지는 규격 맞추기 임시로 데이터 이미지 활용중*/}
+                <div className="top-poster">
+                    <div className="top-rank">
+                        <span>{rank + 1}</span>                        
+                    </div>
+                    <img src={data.large_cover_image} alt={data.title}/>                             
                 </div>            
               {focus && <VideoInfo 
               setShow={setShow}
@@ -66,6 +68,6 @@ const Video = ({ data,setShow }) => {
     );
 }
 
-export default Video;
+export default TopVideo;
               
                 
