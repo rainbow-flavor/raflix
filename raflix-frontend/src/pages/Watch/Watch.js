@@ -1,21 +1,24 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowLeft, FaPause, FaPlay, FaBackward, FaForward , FaVolumeUp, FaInfoCircle, FaStepForward, FaRegClone, FaRegClosedCaptioning} from "react-icons/fa";
-import { BiFullscreen, BiExitFullscreen } from "react-icons/bi";
+import { FaArrowLeft, FaPause, FaPlay, FaBackward, FaForward , FaVolumeUp, FaVolumeMute, FaInfoCircle, FaStepForward, FaRegClone, FaRegClosedCaptioning} from "react-icons/fa";
+import { BiFullscreen } from "react-icons/bi";
 import './Watch.css';
 
 function Watch(props) {    
     const {title} = props.location.state;
     const [play, setPlay] = useState(false);
     const [volume, setVolume] = useState(0);    
+    const [mute, setMute] = useState(false);
     
     const videoBoxRef = useRef();
     const videoRef = useRef();
     const playTimeRef = useRef();
     const playBarRef = useRef();
+    const volumeRef = useRef();
     
     useEffect(() => {        
         if (videoRef.current && playBarRef.current) {
+            videoRef.current.volume = 0;
             videoRef.current.addEventListener('timeupdate', changeProgress);       
             playBarRef.current.addEventListener('click',scrub);
         }        
@@ -50,7 +53,7 @@ function Watch(props) {
     const handlePlayTime = (e) => {
         const btnType = e.currentTarget.className;        
         if (btnType === 'backward') { // 10초전
-            if (play - 10 < 0) return; 
+            if (videoRef.current.currentTime - 10 < 0) return; 
             videoRef.current.currentTime -= 10;
         } else if (btnType === 'forward') { // 10초 뒤
             videoRef.current.currentTime += 10;
@@ -63,13 +66,23 @@ function Watch(props) {
     };
 
     const handleVideoScreen = () => {
-        videoRef.current.requestFullscreen()
+        videoRef.current.requestFullscreen();
+    };
+
+    const handleVolume = (e) => {
+        setVolume(e.target.value);        
+        videoRef.current.volume = e.target.value;
+        if (videoRef.current.volume === 0) {
+            setMute(false);
+        } else {
+            setMute(true);
+        }
     };
 
     return (
         <div className="watch" ref={videoBoxRef}>
             <div className="watch-video">
-                <video ref={videoRef} autoPlay muted>
+                <video ref={videoRef} autoPlay>
                     <source src="./videos/watch-1.mp4"/>
                 </video>
             </div>
@@ -92,7 +105,12 @@ function Watch(props) {
                             <button onClick={handlePlay} title="재생"><span>{play ? <FaPlay/> : <FaPause/>}</span></button>
                             <button className="backward" onClick={handlePlayTime} title="10초 전으로 감기"><span><FaBackward/></span></button>
                             <button className="forward" onClick={handlePlayTime} title="10초 앞으로 감기"><span><FaForward/></span></button>
-                            <button><span><FaVolumeUp/></span></button>
+                            <button className="volume" ref={volumeRef}>
+                                <div className="volume-bar">
+                                    <input type="range" name="volume" className="volume-gage" min="0" max="1" step="0.05" value={volume} onChange={handleVolume} />
+                                </div>
+                                <span>{mute ? <FaVolumeUp/> : <FaVolumeMute/>}</span>
+                            </button>
                         </div>
 
                         <h1>{title}</h1>
