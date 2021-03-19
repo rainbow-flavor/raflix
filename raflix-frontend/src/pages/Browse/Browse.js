@@ -1,26 +1,31 @@
-import React from 'react';
-<<<<<<< HEAD
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import BrowseHeader from './BrowseHeader';
+import MainVideo from './MainVideo';
+import Footer from '../components/Footer';
+import './Browse.css';
 
-const Browse = () => {
-    return (
+const Browse = () => {    
+    const [movieData, setMovieData] = useState([]);
+    useEffect(() => {
+        const movieUrl = "https://yts.mx/api/v2/list_movies.json?sort_by=rating";
+        let movieData = [];
+        axios.get(movieUrl).then((res) => {
+            movieData= [...res.data.data.movies];        
+            setMovieData(movieData);
+        }); 
+    },[movieData]);      
+
+    
+    return (       
         <div className="browse">
             <BrowseHeader/>
-        </div>
+            <MainVideo movieData={movieData}/>    
+            <Footer style={{backgroundColor: '#000'}} />          
+        </div>        
     );
 };
 
 export default Browse;
-=======
-
-function Browse(props) {
-    return (
-        <div>
-            여기는 로그인 승인되면 
-            렌더하는 페이지입니다.
-        </div>
-    );
-}
-
-export default Browse;
->>>>>>> 080dd0ccd29c0ab3d125bc522ee4193a0101b334
+            
+            
