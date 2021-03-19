@@ -39,7 +39,10 @@ const VideoInfo = ({ data, style, focus, userData, setUserData, hoverFadeInfo })
             <div className="video-utils">
                 <div className="video-btns">
                     <div className="btns-user">         
-                        <Link to="/watch">            
+                        <Link to={{
+                            pathname: "/watch",                            
+                            state: { title }
+                        }}>            
                             <button className="btns-play">                                
                                 <span className="hide">재생</span><FaPlay/>                                
                             </button>

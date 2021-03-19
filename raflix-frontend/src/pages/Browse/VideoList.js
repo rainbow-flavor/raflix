@@ -32,7 +32,7 @@ const VideoList = ({ heading, data }) => {
         slidesToShow: 6,
         slidesToScroll: 6,  
         prevArrow: <PrevArrow/>,
-        nextArrow: <NextArrow/>,        
+        nextArrow: <NextArrow/>,           
         afterChange : () => setClick(true)       
     };
     
@@ -51,7 +51,7 @@ const VideoList = ({ heading, data }) => {
                 <Slider {...settings}>
                     {data.map((info,i) => {                        
                         const { id } = info;
-                        return <Video setShow={setShow}key={id} data={{...info}}/>
+                        return <Video setShow={setShow} key={id} data={{...info}}/>
                     })}                               
                 </Slider>
             </ul>
