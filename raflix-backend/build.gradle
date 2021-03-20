@@ -29,7 +29,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.2'
-
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     //START jjwt-json web token dependencies
     compile 'io.jsonwebtoken:jjwt-api:0.11.2'
     runtime 'io.jsonwebtoken:jjwt-impl:0.11.2','io.jsonwebtoken:jjwt-jackson:0.11.2'
