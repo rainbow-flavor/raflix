@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import Slider from "react-slick";
 import Video from './Video.js';
@@ -15,9 +15,13 @@ function PrevArrow(props) {
 }
 
 function NextArrow(props) {
-    const {className, style, onClick} = props;
+    const {className, style, onClick, btnWidth} = props;
+    const btnStyle = {
+        ...style,
+        width: btnWidth
+    }
     return (
-        <button className={className} style={style} onClick={onClick}>
+        <button className={className} style={btnStyle} onClick={onClick}>
             <i><FaAngleRight/></i>
         </button>
     );
@@ -25,36 +29,50 @@ function NextArrow(props) {
 
 const VideoList = ({ heading, data }) => {    
     const [click, setClick] = useState(false);   
-     const [show, setShow] =useState(false);
+    const [show, setShow] =useState(false);
+    const containerRef = useRef();   
+    const containerWidthRef = useRef(0);
+
+    useEffect(()=> {
+        console.dir(containerRef.current)
+        containerWidthRef.current = Math.floor(containerRef.current.offsetLeft);        
+    },[]);
+
     const settings = {
         dots: false,        
         speed: 500,
         slidesToShow: 6,
         slidesToScroll: 6,  
         prevArrow: <PrevArrow/>,
-        nextArrow: <NextArrow/>,           
-        afterChange : () => setClick(true)       
+        nextArrow: <NextArrow btnWidth={containerWidthRef.current}/>,                   
+        afterChange : () => {
+            setClick(true);
+            containerRef.current.classList.add('focus');
+        }      
     };
     
-    return (    
-        <div className={`video-list ${show ? 'focus' : ''}`}>
-            <div className="list-name">
-                <h3>
-                    {heading}
-                    <span>모두보기<em>모두보기</em></span>                
-                    <b><FaAngleRight/></b>                    
-                </h3>                
-            </div>
+    
 
-            <ul className={`list ${click ? "focus" : ''}`}>
-                {!click && <div className="prev-block"></div>}
-                <Slider {...settings}>
-                    {data.map((info,i) => {                        
-                        const { id } = info;
-                        return <Video setShow={setShow} key={id} data={{...info}}/>
-                    })}                               
-                </Slider>
-            </ul>
+    return (            
+        <div ref={containerRef} className="video-list-container">
+            <div className={`video-list ${show ? 'focus' : ''}`}>
+                <div className="list-name">
+                    <h3>
+                        {heading}
+                        <span>모두보기<em>모두보기</em></span>                
+                        <b><FaAngleRight/></b>                    
+                    </h3>                
+                </div>
+
+                <ul className={`list ${click ? "focus" : ''}`}>                    
+                    <Slider {...settings}>
+                        {data.map((info,i) => {                        
+                            const { id } = info;
+                            return <Video setShow={setShow} key={id} data={{...info}}/>
+                        })}                               
+                    </Slider>
+                </ul>
+            </div>
         </div>
     );
 };

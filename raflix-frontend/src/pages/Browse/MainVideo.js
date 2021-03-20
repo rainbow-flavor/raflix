@@ -5,7 +5,7 @@ import VideoList from './VideoList';
 import TopVideoList from './TopVideoList';
 import './MainVideo.css';
 
-function MainVideo({ movieData }) {    
+function MainVideo({ movieData }) {      
     return (
         <div className="main-wrap">
             <div className="video-main">
@@ -33,7 +33,9 @@ function MainVideo({ movieData }) {
                     </div>
                 </div>
             </div>
-            <VideoList heading={"Action"} data={movieData.filter((v) => v.genres.includes("Action"))} />                       
+
+            
+            <VideoList heading={"Action"} data={movieData.filter((v) => v.genres.includes("Action"))} />                                 
             <VideoList heading={"옛날 영화"} data={movieData.filter((v) => v.year < 2013)} />           
             <VideoList heading={"킬링 타임 짧은 영화"} data={movieData.filter((v) => v.runtime < 90)} />      
             <TopVideoList data={[...movieData].filter((v) => v.rating >= 9).splice(0,10)}/>     

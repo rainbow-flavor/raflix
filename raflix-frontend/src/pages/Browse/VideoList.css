@@ -1,8 +1,14 @@
+.video-list-container {
+  overflow: hidden;
+  margin: 0 0 55px 5%;
+}
+.video-list-container.focus {
+  overflow: visible;
+}
 .video-list {
   position: relative;
+  width: 95%;
   z-index: 10;
-  width: 90%;
-  margin: 0 5% 55px;
 }
 .video-list:hover {
   z-index: 11;
@@ -97,9 +103,6 @@
 .slick-prev {
   left: -96px;
 }
-.list.focus .slick-prev {
-  display: block;
-}
 .slick-next {
   right: -96px;
 }
@@ -113,7 +116,7 @@
   transform: scale(1.5);
   transform-origin: center;
 }
-.video-list:hover .list.focus .slick-prev > i,
+.video-list:hover .slick-prev > i,
 .video-list:hover .slick-next > i {
   display: block;
 }
