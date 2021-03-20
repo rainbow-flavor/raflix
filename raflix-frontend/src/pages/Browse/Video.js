@@ -1,14 +1,10 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect, useContext} from 'react';
+import { MovieContext } from './Browse';
 import VideoInfo from './VideoInfo';
 import './Video.css';
 
-const Video = ({ data,setShow }) => {    
-    const [trasnformData, setTrasnformData] = useState('');  
-    const [userData, setUserData] = useState({
-        like : false,
-        mine : false,
-        disLike : false,
-    });  
+const Video = ({ data }) => {        
+    const [trasnformData, setTrasnformData] = useState('');     
     const [focus, setFocus] = useState(false);
     const videoRef = useRef();
     const fadeInfo = useRef();
@@ -23,14 +19,12 @@ const Video = ({ data,setShow }) => {
     };       
 
     const hoverShowInfo = () => {
-        setFocus(true)
-        setShow(true);
+        setFocus(true)        
     };
 
     const hoverFadeInfo = () => {
         fadeInfo.current = setTimeout(() => {
-            setFocus(false);
-            setShow(false);
+            setFocus(false);           
         }, 1000);             
     };
 
@@ -50,17 +44,14 @@ const Video = ({ data,setShow }) => {
             <div className="video-container">
                 <div className="video-thumb">
                     <img src={data.large_cover_image} alt={data.title}/>        
-                                         {/*이미지는 규격 맞추기 임시로 데이터 이미지 활용중*/}
+                    {/*이미지는 규격 맞추기 임시로 데이터 이미지 활용중*/}
                 </div>            
-              {focus && <VideoInfo 
-              setShow={setShow}
-              data={data} 
-              focus={focus} 
-              hoverFadeInfo={hoverFadeInfo}
-              style={{transformOrigin: trasnformData}}
-              userData={userData}
-              setUserData={setUserData}
-              />}
+                {focus && <VideoInfo               
+                data={data} 
+                focus={focus} 
+                hoverFadeInfo={hoverFadeInfo}
+                style={{transformOrigin: trasnformData}}              
+                />}
             </div>
         </li>
     );

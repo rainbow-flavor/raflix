@@ -63,18 +63,6 @@
 .list {
   position: relative;
 }
-/* .prev-block {
-  position: absolute;
-  top: 0;
-  left: -96px;
-  width: 96px;
-  height: 100%;
-  font-size: 0;
-  color: #fff;
-  font-weight: 700;
-  background: rgba(0, 0, 0, 1);
-  z-index: 10;
-} */
 .slick-list {
   overflow: visible;
 }
@@ -119,7 +107,4 @@
 .video-list:hover .slick-prev > i,
 .video-list:hover .slick-next > i {
   display: block;
-}
-.slick-cloned {
-  display: none i !important;
 }

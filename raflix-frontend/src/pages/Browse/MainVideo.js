@@ -1,17 +1,18 @@
-import React from 'react';
-import { FaInfoCircle, FaPlay } from "react-icons/fa";
+import React, { useContext } from 'react';
+import { MovieContext } from './Browse';
 import { Link } from 'react-router-dom';
+import { FaInfoCircle, FaPlay } from "react-icons/fa";
 import VideoList from './VideoList';
 import TopVideoList from './TopVideoList';
 import './MainVideo.css';
 
-function MainVideo({ movieData }) {      
+const MainVideo = () => {      
+    const { data } = useContext(MovieContext);
+    
     return (
         <div className="main-wrap">
             <div className="video-main">
-                <div className="main-image">
-                    {/* <img src="https://occ-0-2794-1360.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABfGTvQ0hDrb7bfRa7O0mnLjqie8HRt5JyXZUPxD09WqVPYgbFeRxK9WJzPk7-yGAVWvkeTYU7o9vqWHJGdYwvUKYNnfs.webp?r=929" alt="그렌라간"/> */}
-                </div>
+                <div className="main-image"></div>                  
 
                 <div className="main-contents">
                     <div className="main-info">
@@ -35,13 +36,13 @@ function MainVideo({ movieData }) {
             </div>
 
             
-            <VideoList heading={"Action"} data={movieData.filter((v) => v.genres.includes("Action"))} />                                 
-            <VideoList heading={"옛날 영화"} data={movieData.filter((v) => v.year < 2013)} />           
-            <VideoList heading={"킬링 타임 짧은 영화"} data={movieData.filter((v) => v.runtime < 90)} />      
-            <TopVideoList data={[...movieData].filter((v) => v.rating >= 9).splice(0,10)}/>     
-            <VideoList heading={"Action"} data={movieData.filter((v) => v.genres.includes("Action"))} />                       
-            <VideoList heading={"옛날 영화"} data={movieData.filter((v) => v.year < 2013)} />           
-            <VideoList heading={"킬링 타임 짧은 영화"} data={movieData.filter((v) => v.runtime < 90)} />   
+            <VideoList heading={"Action"} data={data.filter((v) => v.genres.includes("Action"))} />      
+            <VideoList heading={"옛날 영화"} data={data.filter((v) => v.year < 2013)} />           
+            <VideoList heading={"킬링 타임 짧은 영화"} data={data.filter((v) => v.runtime < 90)} />      
+            <TopVideoList data={[...data].filter((v) => v.rating >= 9).splice(0,10)}/>     
+            <VideoList heading={"Action"} data={data.filter((v) => v.genres.includes("Action"))} />                       
+            <VideoList heading={"옛날 영화"} data={data.filter((v) => v.year < 2013)} />           
+            <VideoList heading={"킬링 타임 짧은 영화"} data={data.filter((v) => v.runtime < 90)} />   
         </div>
     );
 }

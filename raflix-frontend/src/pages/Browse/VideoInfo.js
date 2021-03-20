@@ -1,17 +1,40 @@
-import React, {useRef} from 'react';
+import React, { useRef, useContext } from 'react';
+import { MovieContext, CLICK_LIKE, CLICK_DISLIKE, ADD_MYLIST } from './Browse';
 import { Link } from 'react-router-dom';
 import { AiOutlineDislike, AiOutlineLike, AiFillDislike, AiFillLike, AiOutlineMenuUnfold } from "react-icons/ai";
 import { FaPlus, FaPlay, FaCheck } from "react-icons/fa";
 import './VideoInfo.css';
 
-const VideoInfo = ({ data, style, focus, userData, setUserData, hoverFadeInfo }) => {    
-    const { title, genres, rating, background_image } = data;
-    const { mine, like, disLike } = userData;
+const VideoInfo = ({ data, style, focus, hoverFadeInfo }) => {    
+    const { dispatch } = useContext(MovieContext);   
+    const { title, genres, rating, background_image, id, myList, liked, disLiked } = data;    
+    
     const videoInfoRef = useRef();
 
-    const clickAddList = () => setUserData({...userData, mine : !mine});
-    const clickLike = () => setUserData({...userData, like : !like});
-    const clickDisLike = () => setUserData({...userData, disLike : !disLike});
+    const clickAddList = () => {        
+        dispatch({ 
+            type: ADD_MYLIST, 
+            id,
+            myList: !data.myList
+        });    
+    };
+
+    const clickLike = () => {        
+        dispatch({ 
+            type: CLICK_LIKE, 
+            id,
+            liked: !data.liked
+        });        
+    };
+
+    const clickDisLike = () => {        
+        dispatch({ 
+            type: CLICK_DISLIKE, 
+            id,
+            disLiked: !data.disLiked
+        }); 
+    };
+
     const animation = () => {        
         videoInfoRef.current.style.transform = 'scale(1.6)';
         videoInfoRef.current.style.opacity = '1';
@@ -51,20 +74,20 @@ const VideoInfo = ({ data, style, focus, userData, setUserData, hoverFadeInfo })
                             <div className="text">
                                 <span>내가 찜한 콘텐츠에서 추가<b></b></span>
                             </div>
-                            {mine ? <FaCheck/> : <FaPlus/>}                            
+                            {myList ? <FaCheck/> : <FaPlus/>}                            
                         </button>
                         <button onClick={clickLike} className="btns-like">
                             <div className="text">
                                 <span>좋아요<b></b></span>
                             </div>
-                            {like ? <AiFillLike/> : <AiOutlineLike/>}
+                            {liked ? <AiFillLike/> : <AiOutlineLike/>}
                             
                         </button>
                         <button onClick={clickDisLike} className="btns-dislike">
                             <div className="text">
                                 <span>맘에 안들어요<b></b></span>
                             </div>             
-                            {disLike ? <AiFillDislike/> : <AiOutlineDislike/>}   
+                            {disLiked ? <AiFillDislike/> : <AiOutlineDislike/>}   
                             
                         </button>
                     </div>
