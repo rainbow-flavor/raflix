@@ -73,11 +73,6 @@ const LoginForm = () => {
     return (
         <div className="login-form">
             <h2>로그인</h2>
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> 080dd0ccd29c0ab3d125bc522ee4193a0101b334
             <form onSubmit={onSubmitForm} >
                 <label ref={idRef} htmlFor="login-id">
                     <span>이메일 주소 또는 전화번호</span>
@@ -127,8 +122,4 @@ const LoginForm = () => {
     );
 }
 
-<<<<<<< HEAD
 export default LoginForm; 
-=======
-export default LoginForm;
->>>>>>> 080dd0ccd29c0ab3d125bc522ee4193a0101b334

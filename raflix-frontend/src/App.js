@@ -1,33 +1,14 @@
 import './App.css';
-<<<<<<< HEAD
-import React, { useEffect } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-=======
+import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
->>>>>>> 080dd0ccd29c0ab3d125bc522ee4193a0101b334
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Browse from './pages/Browse/Browse';
-<<<<<<< HEAD
-import AuthService from "./Service/AuthService.js";
-=======
->>>>>>> 080dd0ccd29c0ab3d125bc522ee4193a0101b334
+import Watch from './pages/Watch/Watch';
 
-const App = () => {  
-  const loginCheck = () => {
-    const userData = localStorage.getItem('USER_DATA');
-    const accessToken = JSON.parse(userData).data.accessToken;
-    if(!accessToken) {      
-      return;      
-    } else {
-      console.log('토큰인증');      
-    }
-    return accessToken;
-  };
-  useEffect(() => {
-    loginCheck();    
-  },[]);
+
+const App = () => {   
   
   return (
     <BrowserRouter>
@@ -36,6 +17,7 @@ const App = () => {
         <Route path="/login" component={Login}/>
         <Route path="/signup" component={SignUp}/>
         <Route path="/browse" component={Browse}/>
+        <Route path="/watch" component={Watch}/>
       </div>
     </BrowserRouter>
   );
